@@ -110,7 +110,7 @@
 				"rePlay": false,
 				"playsinline": true,
 				"preload": false,
-				"showBarTime": 1000,
+				"showBarTime": 100000000,
 				"controlBarVisibility": "click",
 				"useH5Prism": true,
 			}, function (player) {
@@ -169,6 +169,16 @@
 					player.seek(currentTime);
 				}
 			}
+			document.oncontextmenu = function () {
+				return false;
+			};
+			document.onkeydown = function () {
+				if (window.event && window.event.keyCode == 123) {
+					event.keyCode = 0;
+					event.returnValue = false;
+					return false;
+				}
+			};
 		</script>
 		<script>
 			// if (!(/Mobi|Android|iPhone/i.test(navigator.userAgent))) {
