@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.23/skins/default/aliplayer-min.css" />
 	<script type="text/javascript" charset="utf-8"
 		src="https://g.alicdn.com/de/prismplayer/2.9.23/aliplayer-min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.3/jquery.js"></script>
 
 	<style type="text/css">
 		.prism-player {
@@ -34,11 +35,37 @@
 			width: 80px;
 		}
 
-		.test {
+		.backBtn {
+			width: 38px;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 10px;
+			margin-right: 5px;
+			border: 1px solid #fff;
+		}
+
+		.forwardBtn {
+			width: 38px;
+			color: #ffffff;
+			font-size: 10px;
+			cursor: pointer;
+			margin-right: 5px;
+			border: 1px solid #fff;
+		}
+
+		.costom-prism-sharpness {
 			width: 100px;
-			height: 50px;
-			background-color: brown;
-			z-index: 9999;
+			margin-left: 10px;
+			margin-top: 15px;
+			float: right;
+			user-select: none;
+		}
+
+		.costom-prism-sharpness .selectd-definition {
+			display: flex;
+			flex-direction: row;
+			color: #fff;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -66,8 +93,6 @@
 				            text-align: center;/*字体居中*/
 							border:3px solid #fff;
 				            cursor: pointer;/*设置鼠标箭头手势*/" />
-			<input type="button" class="test" onclick=javascrtpt:forward()>前进30s</input>
-			<input type="button" class="test" onclick=javascrtpt:back()>后退15s</input>
 		</div>
 		<div class="open">
 			<!-- 这里修改图片打开链接 -->
@@ -87,9 +112,28 @@
 				"preload": false,
 				"showBarTime": 1000,
 				"controlBarVisibility": "click",
-				"useH5Prism": true
+				"useH5Prism": true,
 			}, function (player) {
 				console.log("The player is created");
+				let html = `<div class='costom-prism-sharpness'>
+                    <div class="selectd-definition">
+						<div class="backBtn" onclick=javascrtpt:back()>&lt;&lt;10s</div>
+						<div class="forwardBtn" onclick=javascrtpt:forward()>30s&gt;&gt;</div>
+					</div>
+                </div>`
+				$(html).insertAfter(".prism-volume")
+				$(function () {
+					$(".costom-prism-sharpness").click(function () {
+						$(".definition-list").toggle()
+					})
+					$(".definition-item").click(function () {
+						let text = $(this).text();
+						let lineId = $(this).attr("value")
+						$(this).addClass("active").siblings().removeClass("active");
+						$(".selectd-definition").text(text);
+						change("//player.alicdn.com/video/aliyunmedia.mp4")
+					})
+				})
 			});
 
 			function msg() {
