@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<title>分享转发永久保存</title>
+	<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.23/skins/default/aliplayer-min.css" />
+	<script type="text/javascript" charset="utf-8"
+		src="https://g.alicdn.com/de/prismplayer/2.9.23/aliplayer-min.js"></script>
+
+	<style type="text/css">
+		.prism-player {
+			height: calc(100vh - 65px)
+		}
+
+		.prism-player .prism-cc-btn {
+			display: none !important;
+		}
+
+		.open {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+		}
+
+		img {
+			width: 80px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<body bgcolor="black">
+		<div class="prism-player" id="player-con"></div>
+		<div style="width: 100vw;">
+			<input type="button" value="更 多 资 源 点 我 加 入" onclick=javascrtpt:jump() style="
+				                  width: 70%;/*设置按钮宽度*/
+				            height: 45px;/*设置按钮高度*/
+				            color:white;/*字体颜色*/
+				            background-color:cornflowerblue;/*按钮背景颜色*/
+				            border-radius: 20px;/*让按钮变得圆滑一点*/
+				            border- 0;/*消去按钮丑的边框*/
+				            margin: 0;
+							position: absolute;
+							bottom: 20px;
+							left:15vw;
+							margin: 0 auto;
+				            outline: none;/*取消轮廓*/
+				            font-family: KaiTi;/*字体设置为楷体*/
+				            font-size: 17px;/*设置字体大小*/
+				            text-align: center;/*字体居中*/
+							border:3px solid #fff;
+				            cursor: pointer;/*设置鼠标箭头手势*/" />
+		</div>
+		<div class="open">
+			<!-- 这里修改图片打开链接 -->
+			<a href="https://dongan.lanzout.com/ixeO10bcidch"><img
+					src="https://rjm-1256082493.cos.ap-nanjing.myqcloud.com/da/images/animation.gif" /></a>
+		</div>
+		<script>
+			var player = new Aliplayer({
+				"id": "player-con",
+				"source": "http://45.127.129.36/rms/796341-91be65af1e0942de8d1bf3dbebf85280?download=.m3u8",
+				"width": "100%",
+				"height": `${getClientHeight() - 85}px`,
+				"autoplay": true,
+				"isLive": false,
+				"rePlay": false,
+				"playsinline": true,
+				"preload": false,
+				"showBarTime": 1000,
+				"controlBarVisibility": "click",
+				"useH5Prism": true
+			}, function (player) {
+				console.log("The player is created");
+			});
+
+			function msg() {
+				var text =
+					'分享才能观看完整视频<br><br>点击下面按钮一键复制链接<br><br>分享给好友或群<br><br>从自己分享的链接进入观看完整视频<br><br><br><br><button id="shareBtn" onclick="fz()">一 键 复 制</button>';
+				layer.open({
+					shadeClose: false,
+					content: text,
+				});
+			}
+
+			function getClientHeight() {
+				return window.innerHeight ||
+					document.documentElement.clientHeight ||
+					document.body.clientHeight;
+			}
+		</script>
+		<script>
+			// if (!(/Mobi|Android|iPhone/i.test(navigator.userAgent))) {
+			// 	window.location.href = "https://ock.cn/10fep"
+			// }
+
+			// function jump() {
+			// 	window.location.href = "https://ock.cn/10fep";
+			// }
+		</script>
+
+	</body>
